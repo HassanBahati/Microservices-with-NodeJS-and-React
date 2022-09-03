@@ -10,24 +10,27 @@ app.use(bodyParser.json());
 // store all posts that get created
 const commentsByPostId = {};
 
-// get request comments of a post 
+// get request comments of a post
 app.get("/posts/:id/comments", (req, res) => {
-  res.send(posts);
+  res.send(commentsByPostId[req.body.params.id] || []);
 });
 
-//post request a comment to a post 
+//post request a comment to a post
 app.post("/posts/:id/comments", (req, res) => {
   // generate random id
-  const id = randomBytes(4).toString("hex");
-  const { title } = req.body;
+  const commentId = randomBytes(4).toString("hex");
 
-  posts[id] = {
-    id,
-    title,
-  };
+  const { content } = req.body;
 
-  //send post that was just created to user
-  res.status(201).send(posts[id]);
+  const comments = commentsByPostId[req.params.id] || [];
+
+  comments.push({ id: commentId, content });
+
+  // generate an object with the post id being a key and the comment value
+  commentsByPostId[req.params.id] = comments;
+
+  // return all comments I
+  res.status(201).res(comments);
 });
 
 // app to listen on port 4000
