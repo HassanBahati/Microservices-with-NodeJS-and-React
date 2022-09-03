@@ -12,7 +12,7 @@ const commentsByPostId = {};
 
 // get request comments of a post
 app.get("/posts/:id/comments", (req, res) => {
-  res.send(commentsByPostId[req.body.params.id] || []);
+  res.send(commentsByPostId[req.params.id] || []);
 });
 
 //post request a comment to a post
