@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // store all posts that get created
-const posts = {};
+const commentsByPostId = {};
 
 // get request comments of a post 
 app.get("/posts/:id/comments", (req, res) => {
