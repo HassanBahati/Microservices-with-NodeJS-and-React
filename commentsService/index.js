@@ -30,7 +30,7 @@ app.post("/posts/:id/comments", (req, res) => {
   commentsByPostId[req.params.id] = comments;
 
   // return all comments I
-  res.status(201).res(comments);
+  res.status(201).send(comments);
 });
 
 // app to listen on port 4000
