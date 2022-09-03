@@ -8,7 +8,7 @@ export default () => {
           <label>Title</label>
           <input className="form-control" />
         </div>
-        <button className="btn btn-primary"></button>
+        <button className="btn btn-primary">Submit</button>
       </form>
     </div>
   );
