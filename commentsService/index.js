@@ -10,12 +10,12 @@ app.use(bodyParser.json());
 // store all posts that get created
 const posts = {};
 
-// get request
+// get request comments of a post 
 app.get("/posts/:id/comments", (req, res) => {
   res.send(posts);
 });
 
-//post request
+//post request a comment to a post 
 app.post("/posts/:id/comments", (req, res) => {
   // generate random id
   const id = randomBytes(4).toString("hex");
