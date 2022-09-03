@@ -12,7 +12,7 @@ const commentsByPostId = {};
 
 // get request comments of a post
 app.get("/posts/:id/comments", (req, res) => {
-  res.send(commentsByPostId[req.body.params.id] || []);
+  res.send(commentsByPostId[req.params.id] || []);
 });
 
 //post request a comment to a post
@@ -30,7 +30,7 @@ app.post("/posts/:id/comments", (req, res) => {
   commentsByPostId[req.params.id] = comments;
 
   // return all comments I
-  res.status(201).res(comments);
+  res.status(201).send(comments);
 });
 
 // app to listen on port 4000
