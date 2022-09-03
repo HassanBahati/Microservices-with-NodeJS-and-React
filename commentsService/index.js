@@ -11,12 +11,12 @@ app.use(bodyParser.json());
 const posts = {};
 
 // get request
-app.get("/posts", (req, res) => {
+app.get("/posts/:id/comments", (req, res) => {
   res.send(posts);
 });
 
 //post request
-app.post("/posts", (req, res) => {
+app.post("/posts/:id/comments", (req, res) => {
   // generate random id
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
@@ -31,6 +31,6 @@ app.post("/posts", (req, res) => {
 });
 
 // app to listen on port 4000
-app.listen(4000, () => {
-  console.log("listening on 4000");
+app.listen(4001, () => {
+  console.log("comments server listening on 4001");
 });
