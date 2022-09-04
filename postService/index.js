@@ -29,7 +29,7 @@ app.post("/posts", async (req, res) => {
     title,
   };
 
-  //emit an event when post is created
+  //emit an event to event bus when post is created
   await axios.post("http://localhost:4005/events", {
     type: "PostCreated",
     data: {
