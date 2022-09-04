@@ -45,6 +45,14 @@ app.post("/posts/:id/comments", async (req, res) => {
   res.status(201).send(comments);
 });
 
+//route that recieves event from event bus
+app.post("/events", (req, res) => {
+  console.log("Received event", req.body.type);
+
+  // respond ok when event is received
+  res.send({});
+});
+
 // app to listen on port 4000
 app.listen(4001, () => {
   console.log("comments server listening on 4001");
