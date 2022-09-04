@@ -12,7 +12,7 @@ app.use(cors());
 //post request handler to watch for incoming events
 //make request to necessary endpoints
 app.post("/events", (req, res) => {
-  const { event } = req.body;
+  const event = req.body;
 
   //make requests to relative services that need to be notified
   //once a post request is emmited, send an event to 1.postService, 2.commentsService, 3.eventBus

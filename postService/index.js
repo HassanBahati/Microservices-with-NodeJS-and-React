@@ -37,13 +37,14 @@ app.post("/posts", async (req, res) => {
       title,
     },
   });
+
   //send post that was just created to user
   res.status(201).send(posts[id]);
 });
 
 //route that recieves event from event bus
 app.post("/events", (req, res) => {
-  console.log("Received event", req.body.type);
+  console.log("Received event:", req.body.type);
 
   // respond ok when event is received
   res.send({});
@@ -51,5 +52,5 @@ app.post("/events", (req, res) => {
 
 // app to listen on port 4000
 app.listen(4000, () => {
-  console.log("listening on 4000");
+  console.log("post service listening on 4000");
 });
