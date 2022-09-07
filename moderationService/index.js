@@ -10,8 +10,6 @@ app.use(cors());
 
 app.post("/events", (req, res) => {
   
-
-  console.log(posts)
   //send status sucessful
   res.send({ status: "OK" });
 });
