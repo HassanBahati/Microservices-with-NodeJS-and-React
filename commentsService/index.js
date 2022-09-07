@@ -47,8 +47,33 @@ app.post("/posts/:id/comments", async (req, res) => {
 });
 
 //route that recieves event from event bus
-app.post("/events", (req, res) => {
+app.post("/events", async (req, res) => {
   console.log("Received event:", req.body.type);
+
+  const { type, data } = req.status;
+
+  if (type === "CommentModerated") {
+    const { postId, id, status } = data;
+
+    // get all commented associated with that id
+    const comments = commentsByPostId;
+
+    //iterate through the comments
+    const comment = comments.find((comment) => {
+      return comment.id === id;
+    });
+    comment.status = status;
+
+    //send updated with status event to event bus
+    await axios.post("http://localhost:4005", {
+      data: {
+        id,
+        status,
+        postId,
+        content,
+      },
+    });
+  }
 
   // respond ok when event is received
   res.send({});
