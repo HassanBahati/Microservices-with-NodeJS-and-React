@@ -48,7 +48,7 @@ app.post("/events", (req, res) => {
 
   console.log(posts);
   //send status sucessful
-  res.send({ status: "OK" });
+  res.send({});
 });
 
 // app to listen on port 4005

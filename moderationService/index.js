@@ -26,7 +26,7 @@ app.post("/events", async (req, res) => {
     });
   }
   //send status sucessful
-  res.send({ status: "OK" });
+  res.send({});
 });
 
 // app to listen on port 4003
