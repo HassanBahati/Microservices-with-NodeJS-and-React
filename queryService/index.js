@@ -26,15 +26,29 @@ app.post("/events", (req, res) => {
   }
 
   if (type === "CommentCreated") {
-    const { id, content, postId } = data;
+    const { id, content, postId, status } = data;
 
     const post = posts[postId];
-    post.comments.push({ id, content });
+    post.comments.push({ id, content, status });
   }
 
-  console.log(posts)
+  if (type === "CommentUpdated") {
+    const { id, content, postId, status } = data;
+
+    const post = posts[postId];
+
+    const comment = post.comments.find((comment) => {
+      return comment.id === id;
+    });
+
+    //update the values
+    comment.status = status;
+    comment.content = content;
+  }
+
+  console.log(posts);
   //send status sucessful
-  res.send({ status: "OK" });
+  res.send({});
 });
 
 // app to listen on port 4005
