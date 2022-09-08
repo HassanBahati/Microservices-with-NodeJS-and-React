@@ -9,10 +9,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+// storage of events
+const events = [];
+
 //post request handler to watch for incoming events
 //make request to necessary endpoints
 app.post("/events", (req, res) => {
   const event = req.body;
+
+  //add all events as they com in to the events storage
+  events.push(event);
 
   //make requests to relative services that need to be notified
   //once a post request is emmited, send an event to 1.postService, 2.commentsService, 3.eventBus
@@ -23,6 +29,11 @@ app.post("/events", (req, res) => {
 
   //send status sucessful
   res.send({ status: "OK" });
+});
+
+//route for returning all events
+app.get("/events", (req, res) => {
+  res.send(events);
 });
 
 // app to listen on port 4005
