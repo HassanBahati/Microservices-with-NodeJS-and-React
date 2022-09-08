@@ -56,7 +56,7 @@ app.post("/events", async (req, res) => {
     const { postId, id, status } = data;
 
     // get all commented associated with that id
-    const comments = commentsByPostId;
+    const comments = commentsByPostId[postId];
 
     //iterate through the comments
     const comment = comments.find((comment) => {
