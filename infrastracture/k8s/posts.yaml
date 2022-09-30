@@ -5,4 +5,5 @@ metadata:
 spec:
   containers:
     - name: posts
-      image: bahati/posts:0.0.1
+      image: bahati/post:0.0.1
+      port: 8080
